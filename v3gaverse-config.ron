@@ -1,0 +1,10 @@
+VXDServerConfiguration(
+  environment: Local
+  web_server: WebServer(
+    ipv4_address: (127, 0, 0, 1),
+    port: 8000,
+  ),
+  database: Database(
+    postgresql_connection_string: "postgres://v3ga:orchidok@localhost/saga"
+  ),
+)

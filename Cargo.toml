@@ -1,0 +1,57 @@
+[package]
+name = "v3gaverse-xd"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "v_xd"
+
+[dependencies]
+axum = { version = "0.6.16", features = ["macros", "headers", "multipart"] }
+axum-server = { version = "0.5.1", features = ["tls-rustls"] }
+
+hyper = "0.14.27"
+tokio = { version = "1.27.0", features = ["macros", "rt-multi-thread"] }
+tower-http = { version = "0.4.0", features = ["full"]}
+sqlx = { version = "0.6.3", features = [ "runtime-tokio-rustls", "offline", "migrate", "postgres", "macros", "chrono", "uuid", "json"]}
+
+maud = { version = "*", features = ["axum"] }
+serde = { version = "1.0.152", features = ["derive"] }
+serde_json = "1.0.92"
+uuid  = { version = "1.3.1", features = ["v4", "serde"]}
+chrono = {version = "0.4.23", default-features = false, features = ["clock", "serde"]}
+
+# Logging
+tracing = "0.1.37"
+tracing-subscriber = { version = "0.3.16", features = ["fmt", "ansi", "json", "local-time", "registry", "env-filter"]}
+# NOTE: cargo install bunyan
+tracing-bunyan-formatter = "0.3.6"
+tracing-log = "0.1.3"
+
+
+# Config
+# config = "0.13.3"
+#secrecy = { version = "0.8", features = ["serde"]}
+
+dotenvy = "0.15.7"
+#markdown = "0.3.0"
+
+# eyre = "0.6.8"
+dotenvy_macro = "0.15.7"
+anyhow = "1.0.70"
+
+# - color-eyre = "0.6.2"        
+thiserror = "1.0.40"
+# log = "0.4.17"
+validator = { version = "0.16.0", features = ["derive"] }
+ron = "0.8.0"
+log = "0.4.19"
+
+[dev-dependencies]
+reqwest = "0.11"
+

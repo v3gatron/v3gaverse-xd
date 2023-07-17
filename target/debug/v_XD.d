@@ -1,0 +1,1 @@
+/Users/v3ga/gismxd/v3gaverse-xd/target/debug/v_xd: /Users/v3ga/gismxd/v3gaverse-xd/src/configuration/application.rs /Users/v3ga/gismxd/v3gaverse-xd/src/configuration/mod.rs /Users/v3ga/gismxd/v3gaverse-xd/src/lib.rs /Users/v3ga/gismxd/v3gaverse-xd/src/main.rs
