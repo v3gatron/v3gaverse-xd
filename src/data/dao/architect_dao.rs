@@ -1,12 +1,27 @@
+use crate::data::dto::architect_dto::{self, ArchitectDto, CreateArchitectDto};
 use sqlx::PgPool;
-use crate::data::models::architect;
-use crate::data::dto::architect_dto;
+use std::sync::Arc;
 
-
-pub async fn create_architect_unless_exists() -> Architect { 
-
-    // check to see if architect exists in table
-   // if not then create
-    // there should be a way to limit number of rows in sql table =) 
+struct ArchitectDao {
+    pool: Arc<PgPool>,
 }
 
+impl ArchitectDao {
+    pub async fn create_architect_unless_exists(
+        &self,
+        dto: CreateArchitectDto,
+    ) -> Result<(), sqlx::Error> {
+        sqlx::query!(
+            r#"INSERT INTO architects (handle, password) VALUES ($1, $2)"#,
+            dto.handle,
+            dto.hash_pwd,
+        )
+        .fetch_one(self.pool.as_ref()) // TODO PgPool connection here via app state or maybe the arc above?, is that the best way?
+        .await?;
+
+        // check to see if architect exists in table
+        // if not then create
+        // there should be a way to limit number of rows in sql table =)
+        Ok(())
+    }
+}
