@@ -1,0 +1,16 @@
+{
+  "db": "PostgreSQL",
+  "0e5525086e41c2b57e65d67f60f286b94e90382da2d8e37e9fd017aaf171eb59": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Varchar",
+          "Varchar"
+        ]
+      }
+    },
+    "query": "INSERT INTO architect (handle, password) VALUES ($1, $2)"
+  }
+}
