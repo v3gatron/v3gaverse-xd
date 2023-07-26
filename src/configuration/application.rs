@@ -1,25 +1,25 @@
-use std::{fmt, fs};
 use anyhow::Result;
 use log::info;
 use serde::{Deserialize, Serialize};
+use std::{fmt, fs};
 //use tracing::info;
 use tracing_bunyan_formatter::{BunyanFormattingLayer, JsonStorageLayer};
 use tracing_subscriber::{layer::SubscriberExt, EnvFilter, Registry};
 
-pub const VXD_CONFIG_FILE: &str = "../v3gaverse-config.ron";
+pub const VXD_CONFIG_FILE: &str = "./v3gaverse-config.ron";
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VXDServerConfiguration {
     pub environment: Environment,
     pub web_server: WebServer,
-    pub database: Database, 
+    pub database: Database,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum Environment {
     Local,
     Development,
-    Production
+    Production,
 }
 
 impl fmt::Display for Environment {
@@ -43,7 +43,7 @@ pub async fn configure() -> Result<VXDServerConfiguration> {
     info!("Reading configuration from `{}` file.", VXD_CONFIG_FILE);
     let file_content: String = fs::read_to_string(VXD_CONFIG_FILE)?;
     let configuration: VXDServerConfiguration = ron::from_str(&file_content)?;
-
+    println!("{}", file_content);
 
     // TODO: Add tracing in here?
     configure_tracing(&configuration);
@@ -58,19 +58,14 @@ pub fn configure_tracing(configuration: &VXDServerConfiguration) {
     let env_filter = EnvFilter::try_from_default_env()
         .unwrap_or_else(|_| EnvFilter::new(format!("info,{}=debug", app_name)));
 
-    let formatting_layer = BunyanFormattingLayer::new(
-        app_name.into(),
-        std::io::stdout,
-    );
+    let formatting_layer = BunyanFormattingLayer::new(app_name.into(), std::io::stdout);
 
     let subscriber = Registry::default()
         .with(env_filter)
         .with(JsonStorageLayer)
         .with(formatting_layer);
 
-    tracing::subscriber::set_global_default(subscriber)
-        .expect("Failed to set subscriber");
+    tracing::subscriber::set_global_default(subscriber).expect("Failed to set subscriber");
 
     info!("Tracing is configured.");
 }
-
