@@ -37,7 +37,7 @@ pub async fn start(configuration: VXDServerConfiguration) -> Result<()> {
         "Starting web server...\n\n [https://localhost:{}]\n",
         configuration.web_server.port
     );
-    info!("\n 👾🦋👾🦋👾🦋👾🦋 Böötes Void stirred, and the v3gaverse burst into being!!!");
+    info!("👾🦋 Böötes Void stirred, and the v3gaverse burst into being!!!");
 
     serve(
         application_router,
@@ -51,6 +51,7 @@ pub async fn start(configuration: VXDServerConfiguration) -> Result<()> {
 
 pub fn api_router(app_state: ApplicationState) -> Router {
     Router::new()
+        .merge(api::router::architect::router())
         .merge(api::router::health_check::router())
         .with_state(app_state)
 }
@@ -64,7 +65,7 @@ pub async fn serve(router: Router, socket_address: SocketAddr) -> Result<()> {
 
 #[derive(Clone)]
 pub struct ApplicationState {
-    postgres_service: PostgresRepository,
+    pub postgres_service: PostgresRepository,
 }
 
 impl FromRef<ApplicationState> for PostgresRepository {
