@@ -46,6 +46,25 @@ impl std::fmt::Debug for NewArchitect {
     }
 }
 
+impl std::fmt::Debug for Architect{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("NewArchitect")
+            .field("handle", &self.handle)
+            .finish()
+    }
+}
+
+
+impl std::fmt::Debug for ArchitectResponse {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("NewArchitect")
+            .field("handle", &self.handle)
+            .finish()
+    }
+}
+
+
+// NOTE: If push comes to shove you may be better off combining this and your handler code
 impl NewArchitect {
     pub async fn create(
         State(postgres_repository): State<PostgresRepository>,

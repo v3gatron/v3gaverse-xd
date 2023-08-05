@@ -12,16 +12,16 @@ path = "src/main.rs"
 name = "v_xd"
 
 [dependencies]
-axum = { version = "0.6.19", features = ["macros", "headers", "multipart"] }
+axum = { version = "0.6.20", features = ["macros", "headers", "multipart"] }
 axum-server = { version = "0.5.1", features = ["tls-rustls"] }
 
 hyper = "0.14.27"
 tokio = { version = "1.29.1", features = ["macros", "rt-multi-thread"] }
 tower-http = { version = "0.4.3", features = ["full"]}
-sqlx = { version = "0.6.3", features = [ "runtime-tokio-rustls", "offline", "migrate", "postgres", "macros", "chrono", "uuid", "json"]}
+sqlx = { version = "0.7.1", features = [ "runtime-tokio-rustls", "migrate", "postgres", "macros", "chrono", "uuid", "json"]}
 
 maud = { version = "*", features = ["axum"] }
-serde = { version = "1.0.180", features = ["derive"] }
+serde = { version = "1.0.181", features = ["derive"] }
 serde_json = "1.0.104"
 uuid  = { version = "1.4.1", features = ["v4", "serde"]}
 chrono = {version = "0.4.26", default-features = false, features = ["clock", "serde"]}
