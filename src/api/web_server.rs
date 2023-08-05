@@ -1,6 +1,6 @@
 use std::net::SocketAddr;
 // use std::sync::Arc;
-use crate::api;
+use crate::api::router::{health_check, architect};
 use crate::configuration::application::VXDServerConfiguration;
 use crate::data::postgres_repository::PostgresRepository;
 use anyhow::Result;
@@ -51,8 +51,8 @@ pub async fn start(configuration: VXDServerConfiguration) -> Result<()> {
 
 pub fn api_router(app_state: ApplicationState) -> Router {
     Router::new()
-        .merge(api::router::architect::router())
-        .merge(api::router::health_check::router())
+        .merge(architect::router())
+        .merge(health_check::router())
         .with_state(app_state)
 }
 

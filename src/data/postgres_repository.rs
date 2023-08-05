@@ -2,7 +2,7 @@ use anyhow::{anyhow, Result};
 use sqlx::{pool::PoolOptions, postgres::PgPoolOptions, PgPool};
 use std::time::Duration;
 
-// TODO: At some point add migration code 
+// TODO: At some point add migration code
 
 const DB_POOL_MAX_OPEN: u32 = 32;
 const DB_POOL_MAX_IDLE: u64 = 8;
@@ -20,7 +20,7 @@ impl PostgresRepository {
             .await
             .map_err(|error| anyhow!("{}", error))?;
 
-        let new_handler: PostgresRepository= PostgresRepository {
+        let new_handler: PostgresRepository = PostgresRepository {
             connection_string,
             db_pool,
         };
@@ -42,4 +42,3 @@ pub async fn create_database_pool(connection_string: &str) -> Result<PgPool> {
 
     Ok(result)
 }
-
