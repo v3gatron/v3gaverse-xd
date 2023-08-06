@@ -3,9 +3,13 @@ use std::net::SocketAddr;
 use crate::api::router::{health_check, architect};
 use crate::configuration::application::VXDServerConfiguration;
 use crate::data::postgres_repository::PostgresRepository;
+use crate::web;
 use anyhow::Result;
 use axum::extract::FromRef;
 use axum::Router;
+use axum::routing::get;
+use tower_http::services::ServeDir;
+use tower_http::trace::TraceLayer;
 use tracing::info;
 
 pub async fn start(configuration: VXDServerConfiguration) -> Result<()> {
@@ -51,8 +55,11 @@ pub async fn start(configuration: VXDServerConfiguration) -> Result<()> {
 
 pub fn api_router(app_state: ApplicationState) -> Router {
     Router::new()
+        .merge(web::router())
         .merge(architect::router())
         .merge(health_check::router())
+        .layer(TraceLayer::new_for_http())
+        .nest_service("/resources", ServeDir::new("resources"))
         .with_state(app_state)
 }
 

@@ -1,3 +1,4 @@
+pub mod web;
 pub mod api;
 pub mod configuration;
 pub mod data;
