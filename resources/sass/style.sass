@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Press+Start+2P&display=swap')
+
+  
+$bg1: #011011
+$bg2: #001F22
+$bg3: #010C0D
+
+$green1: #687E6D
+
+$cyberorange: #F08080
+
+$green-highlight: #002325
+$eblue: #6480fd
+/* TODO: you need a really light periwinkle blue for text that glows
+
+body
+  font-size: 1em
+  line-height: 1.3em
+  font-family: Menlo
+  --webkit-font-smoothing: antialiased
+  background-color: $bg1
+  color: #6e6e6e
+
+
+.container
+  background-color: $bg2
+  border-radius: 6px
+  
+a
+  text-decoration: none
+  color: $eblue
+
+a:hover
+  opacity: 75%
+
+.wrapper
+  height: 100%
+  margin: 0 auto
+  max-width: 1650px
+  display: grid
+  gap: 10px
+  grid-template-areas: "header header header" "base base base"
+
+
+#header
+  display: grid
+  gap: 10px
+  grid-area: header
+  grid-template-areas: "header-menu header-space header-account-menu" 
+  grid-template-columns: 640px 590px 390px
+  /* TODO: ^ play with the width */
+
+
+#header-menu
+  display: grid
+  gap: 10px
+  grid-area: header-menu
+  grid-template-columns: 160px 350px
+  grid-template-rows: 50px 50px
+  grid-template-areas: "logo menu" "stack-dump-menu stack-dump-menu"
+  
+#logo
+  grid-area: logo
+  margin-right: 10px
+  font-size: 1.1em 
+  color: #fff
+  font-family: 'Press Start 2P', cursive
+  
+#menu
+  grid-area: menu
+  
+  ul
+    list-style: none
+    margin-left: 10px
+    padding-left: 20px
+    font-weight: 500
+    
+  li
+    display: inline-block
+    margin-right: 5px
+    
+  li:hover
+    color: $green1
+
+
+#stack-dump-menu
+  grid-area: stack-dump-menu
+  position: relative
+  top: -10px
+  left: -10px 
+  font-size: .9em
+  a
+    text-decoration: none
+    color: $green1
+
+  ul
+    list-style: none
+    /* margin-left: 10px
+    padding-left: 20px
+    font-weight: 500
+    
+  li
+    display: inline-block
+    margin-right: 2px
+
+  li:first-child
+    color: #E3DE79
+
+  li:not(:first-child):after 
+    content: " x "
+    color: $cyberorange
+
+#header-space
+  visibility: hidden
+  
+#header-account-menu
+  visibility: hidden
+  grid-area: header-account-menu
+  padding: 10px
+  border-radius: 6px
+  background-color: $bg3
+  text-align: right
+
+#main
+  display: grid
+  gap: 30px
+  grid-area: base
+  grid-template-areas: "sidebar content"
+  grid-template-columns: 500px 1120px  
+  
+  #sidebar 
+    grid-area: sidebar
+
+  .intro 
+    font-size: .8em
+    color: #71875C
+
+    .orange
+      color: $cyberorange
+  
+  #content 
+    display: grid
+    grid-area: content 
+    grid-template-areas: "timeline rbar"
+    grid-template-columns: 650px 470px
+    border-top: 1px solid #7aa2f7
+    color: #fff
+    font-size: .9em
+ 
+    #front-page-monthly-feed
+      grid-area: timeline 
+      margin-top: 12px
+      font-size: .9em
+    
+      ul
+        margin: 0
+        margin-top: 0px
+        list-style: none
+        position: relative
+        padding: 1px 50px
+        color: #fff
+        font-size: 13px
+        &:before
+          content: ''
+          width: 1px
+          height: 100%
+          position: absolute
+          border-left: 2px dashed #00373b
+      li
+        position: relative
+        margin-left: 30px
+        background-color: #002225
+        padding: 14px
+        border-radius: 6px
+        width: 530px
+        &:not(:first-child)
+          margin-top: 60px
+        > span
+          width: 2px
+          height: 100%
+          background: #00373b
+          left: -30px
+          top: 0
+          position: absolute
+          &:before, &:after
+            content: ''
+            width: 8px
+            height: 8px
+            border-radius: 50%
+            border: 2px solid #6580fd
+            position: absolute
+            background: #010e0f
+            left: -5px
+            top: 0
+        span:after
+          top: 100%
+        > div
+          margin-left: 10px
+    div
+      .title, .type
+        font-weight: 600
+        font-size: 12px
+      .info
+        font-weight: 300
+      > div
+        margin-top: 5px
+    span.number
+      height: 100%
+    span
+      position: absolute
+      font-size: 10px
+      left: -35px
+      font-weight: bold
+      &:first-child
+        top: 0
+      &:last-child
+        top: 100%
+    
+    #right-bar
+      grid-area: rbar
+      margin-top: 12px
+      padding-left: 50px
+      font-size: .8em

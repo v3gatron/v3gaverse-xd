@@ -1,13 +1,13 @@
 use std::net::SocketAddr;
 // use std::sync::Arc;
-use crate::api::router::{health_check, architect};
+use crate::api::router::{architect, health_check};
 use crate::configuration::application::VXDServerConfiguration;
 use crate::data::postgres_repository::PostgresRepository;
 use crate::web;
 use anyhow::Result;
 use axum::extract::FromRef;
-use axum::Router;
 use axum::routing::get;
+use axum::Router;
 use tower_http::services::ServeDir;
 use tower_http::trace::TraceLayer;
 use tracing::info;

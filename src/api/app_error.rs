@@ -2,7 +2,6 @@ use axum::response::{IntoResponse, Response};
 use thiserror::Error;
 use tracing::error;
 
-
 pub type Result<T, E = AppError> = std::result::Result<T, E>;
 
 #[derive(Debug, Error)]
@@ -12,7 +11,6 @@ pub enum AppError {
 
     #[error("an internal server error occurred")]
     Anyhow(#[from] anyhow::Error),
-
     // #[error("validation error in request body")]
     // InvalidEntity(#[from] ValidationErrors),
 }
@@ -31,7 +29,6 @@ pub enum AppError {
 //         (payload.status.unwrap(), Json(payload)).into_response()
 //     }
 // }
-
 
 // pub fn handle_panic(err: Box<dyn Any + Send + 'static>) -> Response<Body> {
 //     let mut problem = HttpApiProblem::new(StatusCode::INTERNAL_SERVER_ERROR)

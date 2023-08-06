@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Press+Start+2P&display=swap");
+/* TODO: you need a really light periwinkle blue for text that glows */
+body {
+  font-size: 1em;
+  line-height: 1.3em;
+  font-family: Menlo;
+  --webkit-font-smoothing: antialiased;
+  background-color: #011011;
+  color: #6e6e6e;
+}
+
+.container {
+  background-color: #001F22;
+  border-radius: 6px;
+}
+
+a {
+  text-decoration: none;
+  color: #6480fd;
+}
+
+a:hover {
+  opacity: 75%;
+}
+
+.wrapper {
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1650px;
+  display: grid;
+  gap: 10px;
+  grid-template-areas: "header header header" "base base base";
+}
+
+#header {
+  display: grid;
+  gap: 10px;
+  grid-area: header;
+  grid-template-areas: "header-menu header-space header-account-menu";
+  grid-template-columns: 640px 590px 390px;
+  /* TODO: ^ play with the width */
+}
+
+#header-menu {
+  display: grid;
+  gap: 10px;
+  grid-area: header-menu;
+  grid-template-columns: 160px 350px;
+  grid-template-rows: 50px 50px;
+  grid-template-areas: "logo menu" "stack-dump-menu stack-dump-menu";
+}
+
+#logo {
+  grid-area: logo;
+  margin-right: 10px;
+  font-size: 1.1em;
+  color: #fff;
+  font-family: "Press Start 2P", cursive;
+}
+
+#menu {
+  grid-area: menu;
+}
+#menu ul {
+  list-style: none;
+  margin-left: 10px;
+  padding-left: 20px;
+  font-weight: 500;
+}
+#menu li {
+  display: inline-block;
+  margin-right: 5px;
+}
+#menu li:hover {
+  color: #687E6D;
+}
+
+#stack-dump-menu {
+  grid-area: stack-dump-menu;
+  position: relative;
+  top: -10px;
+  left: -10px;
+  font-size: 0.9em;
+}
+#stack-dump-menu a {
+  text-decoration: none;
+  color: #687E6D;
+}
+#stack-dump-menu ul {
+  list-style: none;
+  /* margin-left: 10px */
+  padding-left: 20px;
+  font-weight: 500;
+}
+#stack-dump-menu li {
+  display: inline-block;
+  margin-right: 2px;
+}
+#stack-dump-menu li:first-child {
+  color: #E3DE79;
+}
+#stack-dump-menu li:not(:first-child):after {
+  content: " x ";
+  color: #F08080;
+}
+
+#header-space {
+  visibility: hidden;
+}
+
+#header-account-menu {
+  visibility: hidden;
+  grid-area: header-account-menu;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #010C0D;
+  text-align: right;
+}
+
+#main {
+  display: grid;
+  gap: 30px;
+  grid-area: base;
+  grid-template-areas: "sidebar content";
+  grid-template-columns: 500px 1120px;
+}
+#main #sidebar {
+  grid-area: sidebar;
+}
+#main .intro {
+  font-size: 0.8em;
+  color: #71875C;
+}
+#main .intro .orange {
+  color: #F08080;
+}
+#main #content {
+  display: grid;
+  grid-area: content;
+  grid-template-areas: "timeline rbar";
+  grid-template-columns: 650px 470px;
+  border-top: 1px solid #7aa2f7;
+  color: #fff;
+  font-size: 0.9em;
+}
+#main #content #front-page-monthly-feed {
+  grid-area: timeline;
+  margin-top: 12px;
+  font-size: 0.9em;
+}
+#main #content #front-page-monthly-feed ul {
+  margin: 0;
+  margin-top: 0px;
+  list-style: none;
+  position: relative;
+  padding: 1px 50px;
+  color: #fff;
+  font-size: 13px;
+}
+#main #content #front-page-monthly-feed ul:before {
+  content: "";
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  border-left: 2px dashed #00373b;
+}
+#main #content #front-page-monthly-feed li {
+  position: relative;
+  margin-left: 30px;
+  background-color: #002225;
+  padding: 14px;
+  border-radius: 6px;
+  width: 530px;
+}
+#main #content #front-page-monthly-feed li:not(:first-child) {
+  margin-top: 60px;
+}
+#main #content #front-page-monthly-feed li > span {
+  width: 2px;
+  height: 100%;
+  background: #00373b;
+  left: -30px;
+  top: 0;
+  position: absolute;
+}
+#main #content #front-page-monthly-feed li > span:before, #main #content #front-page-monthly-feed li > span:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #6580fd;
+  position: absolute;
+  background: #010e0f;
+  left: -5px;
+  top: 0;
+}
+#main #content #front-page-monthly-feed li span:after {
+  top: 100%;
+}
+#main #content #front-page-monthly-feed li > div {
+  margin-left: 10px;
+}
+#main #content div .title, #main #content div .type {
+  font-weight: 600;
+  font-size: 12px;
+}
+#main #content div .info {
+  font-weight: 300;
+}
+#main #content div > div {
+  margin-top: 5px;
+}
+#main #content span.number {
+  height: 100%;
+}
+#main #content span {
+  position: absolute;
+  font-size: 10px;
+  left: -35px;
+  font-weight: bold;
+}
+#main #content span:first-child {
+  top: 0;
+}
+#main #content span:last-child {
+  top: 100%;
+}
+#main #content #right-bar {
+  grid-area: rbar;
+  margin-top: 12px;
+  padding-left: 50px;
+  font-size: 0.8em;
+}
+
+/*# sourceMappingURL=style.css.map */

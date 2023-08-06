@@ -14,8 +14,8 @@ pub enum Error {
     NotFound,
     #[error("500 Internal Server Error")]
     InternalServerError,
-     #[error("an internal database error occurred")]
-     Sqlx(#[from] sqlx::Error),
+    #[error("an internal database error occurred")]
+    Sqlx(#[from] sqlx::Error),
 }
 
 // NOTE: watch out for this. 'thiserror/anyhow'
@@ -85,11 +85,6 @@ impl From<Error> for anyhow::Error {
 //         .body(Body::from(serde_json::to_string(&problem).unwrap()))
 //         .unwrap()
 // }
-
-
-
-
-
 
 // NOTE: Old error code
 // use axum::{http, response::IntoResponse, Json};

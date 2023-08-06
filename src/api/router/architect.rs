@@ -1,5 +1,5 @@
 use crate::api::web_server::ApplicationState;
-use crate::data::architect::{ArchitectBody ,NewArchitect, ArchitectResponse, Architect};
+use crate::data::architect::{Architect, ArchitectBody, ArchitectResponse, NewArchitect};
 use crate::data::postgres_repository::PostgresRepository;
 //use crate::api::app_error::{Result, AppError}; // lets use the reg Result for now
 use axum::extract::{self, State};
@@ -23,15 +23,15 @@ pub async fn create_architect(
     Json(req): extract::Json<NewArchitect>,
 ) -> (StatusCode, Json<ArchitectBody<ArchitectResponse>>) {
     let architect = NewArchitect::create(State(data), Json(req)).await;
-    
 
     // NOTE: hold tight Ok(Json(Architect {id: architect.id, handle: architect.handle, password: architect.password}))
-    (StatusCode::OK,
-     Json(ArchitectBody {
-         architect: ArchitectResponse {
-             handle: "vega".to_owned(),
-         },
-     }),
+    (
+        StatusCode::OK,
+        Json(ArchitectBody {
+            architect: ArchitectResponse {
+                handle: "vega".to_owned(),
+            },
+        }),
     )
 }
 
@@ -58,9 +58,10 @@ pub async fn create_architect2(
     };
 
     // Return the `ArchitectResponse` struct as the response.
-    (StatusCode::OK,
-     Json(ArchitectBody {
-         architect: architect_response,
-     }),
+    (
+        StatusCode::OK,
+        Json(ArchitectBody {
+            architect: architect_response,
+        }),
     )
 }
