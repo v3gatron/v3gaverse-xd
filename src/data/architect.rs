@@ -17,14 +17,16 @@ pub struct ArchitectBody<T> {
 
 #[derive(Serialize, FromRow)] // TODO: Do you need validate? It's only you after all...
 pub struct Architect {
-    pub id: i32,
+    pub id: Uuid,
     pub handle: String,
     pub password: String,
     pub created_at: Option<NaiveDateTime>,
+    pub last_login: Option<NaiveDateTime>,
 }
 
 #[derive(Serialize, FromRow)] // TODO: Do you need validate? It's only you after all...
 pub struct ArchitectResponse {
+    pub id: Uuid,
     pub handle: String,
 }
 

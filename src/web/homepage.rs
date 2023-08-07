@@ -162,7 +162,7 @@ pub async fn homepage() -> Markup {
                                     "Here, I celebrate the simplicity of the web's earlier days while embracing the power of modern technology to connect, inspire, and engage. Picture it as a digital scrapbook, showcasing my interests with thoughtful design and a touch of whimsy. This website offers a platform for creative expression, deep dives into my favorite topics, and the chance to build a community of people who share these common interests."
                                 }
                                 p {
-                                    "So, step back in time and dive into the future with me at [Your Website Name] – a place where the old and the new collide to create an unforgettable online experience. Let's rediscover the magic of the internet together, one page and one post at a time. Welcome, and enjoy the journey!"
+                                    "So, step back in time and dive into the future with me at v3gaverse – a place where the old and the new collide to create an unforgettable online experience. Let's rediscover the magic of the internet together, one page and one post at a time. Welcome, and enjoy the journey!"
                                 }
                             }
                             div #"sidebar-book-list" {
