@@ -1,6 +1,6 @@
 use axum::{routing::get, Router};
 
-use crate::api::web_server::ApplicationState;
+use crate::server::ApplicationState;
 
 pub mod cyberdeck;
 pub mod homepage;

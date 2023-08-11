@@ -51,6 +51,8 @@ thiserror = "1.0.44"
 validator = { version = "0.16.1", features = ["derive"] }
 ron = "0.8.0"
 log = "0.4.19"
+async-trait = "0.1.72"
+mockall = "0.11.4"
 
 [dev-dependencies]
 reqwest = "0.11"
