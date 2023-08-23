@@ -5,7 +5,9 @@ pub mod services;
 
 use std::net::SocketAddr;
 // use std::sync::Arc;
-use crate::server::api::{architect, health_check};
+// use crate::server::api::{architect, health_check};
+use crate::server::api::health_check;
+
 use crate::configuration::application::VXDServerConfiguration;
 use crate::data::postgres_repository::PostgresRepository;
 use crate::web;
@@ -61,7 +63,7 @@ pub async fn start(configuration: VXDServerConfiguration) -> Result<()> {
 pub fn api_router(app_state: ApplicationState) -> Router {
     Router::new()
         .merge(web::router())
-        .merge(architect::router())
+  //      .merge(architect::router())
         .merge(health_check::router())
         .layer(TraceLayer::new_for_http())
         .nest_service("/resources", ServeDir::new("resources"))
